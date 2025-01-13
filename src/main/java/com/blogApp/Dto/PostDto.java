@@ -1,7 +1,4 @@
 package com.blogApp.Dto;
-
-import com.blogApp.entity.Category;
-import com.blogApp.entity.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

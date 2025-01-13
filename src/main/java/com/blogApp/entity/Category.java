@@ -10,10 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "categories")
 @NoArgsConstructor
 @Getter
 @Setter
+@Table(name = "categories")
 public class Category {
 
     @Id
