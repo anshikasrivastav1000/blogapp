@@ -49,8 +49,9 @@ public class PostController {
     //get all post
     @GetMapping("/posts")
     public  ResponseEntity<PostResponse> getAllPost(@RequestParam(value ="pageNumber",defaultValue = "0",required = false)Integer pageNumber,
-                                                                @RequestParam(value = "pageSize",defaultValue = "10",required = false) Integer pageSize){
-        PostResponse postResponse = this.postService.getAllPosts(pageNumber,pageSize);
+                                                                @RequestParam(value = "pageSize",defaultValue = "10",required = false) Integer pageSize,
+                                                    @RequestParam(value ="sortBy",defaultValue = "postId",required = false) String sortBy){
+        PostResponse postResponse = this.postService.getAllPosts(pageNumber,pageSize,sortBy);
         return  new ResponseEntity<PostResponse>(postResponse,HttpStatus.OK);
     }
     //get post by id
@@ -70,6 +71,13 @@ public class PostController {
     public ResponseEntity<PostDto> updatePost(@RequestBody PostDto postDto,@PathVariable Integer postId){
        PostDto updatePost = this.postService.updatePost(postDto ,postId);
        return new ResponseEntity<>(updatePost,HttpStatus.OK);
-
+    }
+    //search
+    @GetMapping("/posts/search/{keywords}")
+    public ResponseEntity<List<PostDto>> searchByPostTitle(
+            @PathVariable("keywords") String keywords
+    ){
+        List<PostDto> result = this.postService.searchPosts(keywords);
+        return new ResponseEntity<List<PostDto>>(result,HttpStatus.OK);
     }
 }
