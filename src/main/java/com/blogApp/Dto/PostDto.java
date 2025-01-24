@@ -11,7 +11,7 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 public class PostDto {
-private Integer postId;
+private Long postId;
     private  String title;
     private String content;
     private String imageName;

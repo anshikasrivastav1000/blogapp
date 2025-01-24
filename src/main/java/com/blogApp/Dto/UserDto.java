@@ -13,7 +13,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class UserDto {
-    private int id;
+    private Long id;
    @NotEmpty
    @Size(min = 4, message = "username must be min of 4 Charachters ")
     private String name;
@@ -22,8 +22,8 @@ public class UserDto {
     @NotEmpty
     @Size(min = 3, max = 10, message = ("password must be min 3 and max 4 charachters"))
     private String password;
-    @NotNull
-    private String about;
+//    @NotNull
+//    private String about;
 
 
 

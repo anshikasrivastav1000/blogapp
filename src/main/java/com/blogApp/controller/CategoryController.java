@@ -25,21 +25,21 @@ public class CategoryController {
 
     }
     @PutMapping("/{catId}")
-    public ResponseEntity<CategoryDto> updateCategory(@RequestBody CategoryDto categoryDto, @PathVariable Integer catId){
+    public ResponseEntity<CategoryDto> updateCategory(@RequestBody CategoryDto categoryDto, @PathVariable Long catId){
         CategoryDto updateCategory =this.categoryService.updateCategory(categoryDto,catId);
         return new ResponseEntity<CategoryDto>(updateCategory, HttpStatus.OK);
 
 
     }
     @DeleteMapping("/{catId}")
-    public ResponseEntity<Void> deleteCategory( @PathVariable Integer catId){
+    public ResponseEntity<Void> deleteCategory( @PathVariable Long catId){
         categoryService.deleteCategory(catId);
         return ResponseEntity.noContent().build();
     }
 
     //get all user
     @GetMapping("/{catId}")
-    public ResponseEntity<CategoryDto> getCategory(@PathVariable Integer catId){
+    public ResponseEntity<CategoryDto> getCategory(@PathVariable Long catId){
         return ResponseEntity.ok(this.categoryService.getCategory(catId));
     }
     //get user by id

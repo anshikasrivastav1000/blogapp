@@ -23,7 +23,7 @@ public class CommentServiceImp implements CommentService{
     }
 
     @Override
-    public CommentDto createComment(CommentDto commentDto, Integer postId) {
+    public CommentDto createComment(CommentDto commentDto, Long postId) {
         Post post = this.postRepo.findById(postId).orElseThrow(() -> new ResourceNotFoundException("post not found with this id:" + postId));
         Comment comment = this.modelMapper.map(commentDto,Comment.class);
         comment.setPost(post);
@@ -33,7 +33,7 @@ public class CommentServiceImp implements CommentService{
     }
 
     @Override
-    public void deleteComment(Integer commentId) {
+    public void deleteComment(Long commentId) {
         Comment com = this.commentRepo.findById(commentId).orElseThrow(() -> new ResourceNotFoundException("post not found with this id:" + commentId));
         this.commentRepo.delete(com);
     }
